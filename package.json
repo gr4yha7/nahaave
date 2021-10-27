@@ -1,7 +1,8 @@
 {
   "name": "hardhat-project",
   "scripts": {
-    "deploy:lpa": "yarn hardhat run scripts/deployLpa.js --network nahmii"
+    "deploy:provider": "yarn hardhat run scripts/deployLpa.js --network nahmii",
+    "deploy:registry": "yarn hardhat run scripts/deployRegistry.js --network nahmii"
   },
   "devDependencies": {
     "@eth-optimism/hardhat-ovm": "^0.2.3",
