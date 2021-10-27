@@ -38,8 +38,9 @@ module.exports = {
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       // accounts: { mnemonic: process.env.MNEMONIC },
       gasPrice: 15000000,
-      gas: 9000000,
-      ovm: true
+      gas: 11000000,
+      ovm: true,
+      timeout: 0
     },
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
