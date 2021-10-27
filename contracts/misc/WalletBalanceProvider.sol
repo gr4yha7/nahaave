@@ -25,7 +25,8 @@ contract WalletBalanceProvider {
   using SafeERC20 for IERC20;
   using ReserveConfiguration for DataTypes.ReserveConfigurationMap;
 
-  address constant MOCK_ETH_ADDRESS = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+  address constant MOCK_ETH_ADDRESS = 0x4200000000000000000000000000000000000006; // weth
+  // address constant MOCK_ETH_ADDRESS = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE; // Native ETH
 
   /**
     @dev Fallback function, don't accept any ETH
@@ -43,7 +44,7 @@ contract WalletBalanceProvider {
     **/
   function balanceOf(address user, address token) public view returns (uint256) {
     if (token == MOCK_ETH_ADDRESS) {
-      return user.balance; // ETH balance
+      return IERC20(token).balanceOf(user); // ETH balance
       // check if token is actually a contract
     } else if (token.isContract()) {
       return IERC20(token).balanceOf(user);
