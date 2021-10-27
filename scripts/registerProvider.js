@@ -1,5 +1,4 @@
 const {ethers} = require("hardhat");
-const metadata = require("../artifacts-ovm/contracts/protocol/configuration/LendingPoolAddressesProviderRegistry.sol/LendingPoolAddressesProviderRegistry.json");
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -13,7 +12,7 @@ async function main() {
   const providerAddress = "0x963672187397904ec0346dbBe444222f0144399e";
   const registryAddress = "0x819c4CDA0C95e79df89C7596FC60327D1a3949CD";
 
-  const LendingPoolAddressesProviderRegistry = await ethers.getContractAt(metadata.abi, registryAddress);
+  const LendingPoolAddressesProviderRegistry = await ethers.getContractAt("contracts/interfaces/ILendingPoolAddressesProviderRegistry.sol:ILendingPoolAddressesProviderRegistry", registryAddress);
 
   const tx = await LendingPoolAddressesProviderRegistry.registerAddressesProvider(providerAddress, 1);
   if (tx) {
