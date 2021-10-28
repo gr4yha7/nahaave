@@ -15,8 +15,10 @@ contract AaveProtocolDataProvider {
   using ReserveConfiguration for DataTypes.ReserveConfigurationMap;
   using UserConfiguration for DataTypes.UserConfigurationMap;
 
-  address constant MKR = 0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2;
-  address constant ETH = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+  // address constant MKR = 0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2;
+  // address constant ETH = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+  address constant NII = 0x595DBA438a1bf109953F945437c1584319515d88; // NII
+  address constant WETH = 0x4200000000000000000000000000000000000006; // WETH
 
   struct TokenData {
     string symbol;
@@ -34,12 +36,12 @@ contract AaveProtocolDataProvider {
     address[] memory reserves = pool.getReservesList();
     TokenData[] memory reservesTokens = new TokenData[](reserves.length);
     for (uint256 i = 0; i < reserves.length; i++) {
-      if (reserves[i] == MKR) {
-        reservesTokens[i] = TokenData({symbol: 'MKR', tokenAddress: reserves[i]});
+      if (reserves[i] == NII) {
+        reservesTokens[i] = TokenData({symbol: 'NII', tokenAddress: reserves[i]});
         continue;
       }
-      if (reserves[i] == ETH) {
-        reservesTokens[i] = TokenData({symbol: 'ETH', tokenAddress: reserves[i]});
+      if (reserves[i] == WETH) {
+        reservesTokens[i] = TokenData({symbol: 'WETH', tokenAddress: reserves[i]});
         continue;
       }
       reservesTokens[i] = TokenData({

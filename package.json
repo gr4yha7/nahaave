@@ -1,8 +1,11 @@
 {
   "name": "hardhat-project",
   "scripts": {
+    "compile": "yarn hardhat compile",
+    "test": "yarn hardhat --network nahmii test",
     "deploy:provider": "yarn hardhat run scripts/deployLpa.js --network nahmii",
-    "deploy:registry": "yarn hardhat run scripts/deployRegistry.js --network nahmii"
+    "deploy:registry": "yarn hardhat run scripts/deployRegistry.js --network nahmii",
+    "deploy:rest": "yarn hardhat run scripts/deployRest.js --network nahmii"
   },
   "devDependencies": {
     "@eth-optimism/hardhat-ovm": "^0.2.3",
